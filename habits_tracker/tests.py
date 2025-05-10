@@ -13,7 +13,7 @@ class HabitTestCase(APITestCase):
             pk=1,
             user=self.user,
             place="Place 1",
-            time="2025-03-30T15:30:00+03:00",
+            time="2025-03-30T19:30:00+07:00",
             action="Action 1",
             pleasent=False,
             frequency="30 15 * * *",
@@ -84,7 +84,7 @@ class HabitTestCase(APITestCase):
             "action": "Action 2",
             "pleasent": False,
             "frequency": "m h * * *",
-            "related_habit_id": 2,
+            "related_habits_id": 2,
             "execution_time": 90,
             "publicity": False,
         }
@@ -144,7 +144,7 @@ class HabitTestCase(APITestCase):
             "pleasent": False,
             "frequency": "m h * * *",
             "reward": "Reward 2",
-            "related_habit_id": 2,
+            "related_habits_id": 2,
             "execution_time": 120,
             "publicity": False,
         }
@@ -411,7 +411,7 @@ class HabitTestCase(APITestCase):
             "pleasent": True,
             "execution_time": 90,
             "publicity": False,
-            "related_habit_id": 2,
+            "related_habits_id": 2,
         }
         request = self.client.post(url, body, format="json")
         response = request.json()
@@ -533,7 +533,7 @@ class HabitTestCase(APITestCase):
                         "frequency": self.good_habit.frequency,
                         "end_time": None,
                         "user": self.user.pk,
-                        "related_habit": None,
+                        "related_habits": None,
                         "days_of_week": [],
                     },
                     {
@@ -548,7 +548,7 @@ class HabitTestCase(APITestCase):
                         "frequency": "m h * * *",
                         "end_time": None,
                         "user": self.user.pk,
-                        "related_habit": None,
+                        "related_habits": None,
                         "days_of_week": [],
                     },
                 ],

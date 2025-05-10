@@ -18,7 +18,7 @@ class HabitValidator:
 
     def validate_reward(self, attrs):
         """Проверка на одновременное присутсвие награды и связанной привычки."""
-        if attrs.get("related_habit_id") and attrs.get("reward"):
+        if attrs.get("related_habits_id") and attrs.get("reward"):
             raise ValidationError(
                 "Запрещено выбирать одновременно награду и связанную привычку! Выберите что-то одно."
             )
@@ -26,7 +26,7 @@ class HabitValidator:
     def validate_pleasant_habit(self, attrs):
         """Проверка приятной привычки на начилие награды."""
         if attrs.get("pleasent") and any(
-                [attrs.get("related_habit_id"), attrs.get("reward"), attrs.get("frequency"), attrs.get("time")]
+                [attrs.get("related_habits_id"), attrs.get("reward"), attrs.get("frequency"), attrs.get("time")]
         ):
             raise ValidationError(
                 "У приятной привычки не может быть вознаграждения!"
@@ -34,7 +34,7 @@ class HabitValidator:
         if not attrs.get("pleasent") and not any(
             [
                 all([attrs.get("reward"), attrs.get("frequency"), attrs.get("time")]),
-                all([attrs.get("related_habit_id"), attrs.get("frequency"), attrs.get("time")]),
+                all([attrs.get("related_habits_id"), attrs.get("frequency"), attrs.get("time")]),
             ]
         ):
             raise ValidationError(

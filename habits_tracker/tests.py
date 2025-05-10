@@ -73,7 +73,6 @@ class HabitTestCase(APITestCase):
         self.assertEqual(Habit.objects.all().count(), 5)
         frequency = Habit.objects.get(place="Place 2").frequency
         self.assertEqual(frequency, "30 16 * * Понедельник,Вторник")
-        print(request.data)
 
     def test_habit_create_good_habit_with_related_habit(self):
         url = reverse("habits_tracker:habit-create")

@@ -24,12 +24,12 @@
     sudo usermod -aG docker $USER && newgrp docker
     ```
 3. #### Установка репозитория  
-  ```bash
-  git clone https://github.com/MyX007/Course_work_7.git /var/www/habit_tracker
-  ```
+     ```bash
+     git clone https://github.com/MyX007/Course_work_7.git /var/www/habit_tracker
+     ```
 4. #### Настройка переменных окружения
    1. **Создайте в корневой папке проекта файл .env**
-   2. Заполните его в соответствии с образцом, указанном ниже:
+   2. **Заполните его в соответствии с образцом, указанном ниже:**
       ```
       # Сектретный ключ djnago. 
       SECRET_KEY=django-insecure-qwwertytyuiuioopp123
@@ -60,3 +60,23 @@
       CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
       CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
       ```  
+5. #### Основные команды управления проектом
+   - **Сборка и запуск**
+      ```bash
+      docker compose up -d --build
+      ```
+   - **Просмотр логов**
+     ```bash
+     docker compose logs
+     ```
+   - **Остановка**
+     ```bash
+     docker compose down
+     ```
+   
+7. #### Примечания
+   - **Миграции применяются автоматически**
+   - **Проект запускается на локальном порту 8000**
+   - **Celery и Celery Beat запускаются автоматически**
+   - 
+   - 

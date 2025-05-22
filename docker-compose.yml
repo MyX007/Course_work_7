@@ -62,7 +62,7 @@ services:
       - .:/config
 
 networks:
-  app_neetwork:
+  app_network:
     driver: bridge
 
 volumes:
